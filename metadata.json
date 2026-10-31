@@ -1,0 +1,6 @@
+{
+  "name": "Dala — Interactive Particle Constellation Portfolio",
+  "description": "60fps scrubbed-timeline 3D particle constellation portfolio with cursor force fields, continuous keyframe morphing, type-to-morph glyphs, and native macOS SwiftUI source.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
