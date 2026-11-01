@@ -533,19 +533,32 @@ export const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
           if (count === 0) continue;
           const list = bucketLists[bucket];
           const t = bucket / Math.max(1, DEPTH_BUCKETS - 1);
-          const alpha = (0.16 + t * 0.78) * kfState.opacity;
-          const br = Math.round(lerp(r * 0.55, Math.min(255, r + 55), t));
-          const bg = Math.round(lerp(g * 0.55, Math.min(255, g + 55), t));
-          const bb = Math.round(lerp(b * 0.55, Math.min(255, b + 55), t));
+          const alpha = (0.22 + t * 0.76) * kfState.opacity;
+          const br = Math.round(lerp(r * 0.65, Math.min(255, r + 95), t));
+          const bg = Math.round(lerp(g * 0.68, Math.min(255, g + 95), t));
+          const bb = Math.round(lerp(b * 0.72, Math.min(255, b + 95), t));
           ctx.fillStyle = `rgba(${br}, ${bg}, ${bb}, ${alpha.toFixed(3)})`;
           ctx.beginPath();
           for (let k = 0; k < count; k++) {
             const pt = pts[list[k]];
-            const rRad = pt.baseRadius * (0.55 + t * 0.92);
+            const rRad = pt.baseRadius * (0.62 + t * 0.98);
             ctx.moveTo(pt.x + rRad, pt.y);
             ctx.arc(pt.x, pt.y, rRad, 0, Math.PI * 2);
           }
           ctx.fill();
+
+          // Add a high-voltage cyber-yellow/white core glint on the closest foreground depth bucket
+          if (bucket === DEPTH_BUCKETS - 1) {
+            ctx.fillStyle = `rgba(255, 252, 210, ${(0.82 * kfState.opacity).toFixed(3)})`;
+            ctx.beginPath();
+            for (let k = 0; k < count; k++) {
+              const pt = pts[list[k]];
+              const glintR = pt.baseRadius * 0.52;
+              ctx.moveTo(pt.x - 0.5 + glintR, pt.y - 0.5);
+              ctx.arc(pt.x - 0.5, pt.y - 0.5, glintR, 0, Math.PI * 2);
+            }
+            ctx.fill();
+          }
         }
       }
 
@@ -677,14 +690,14 @@ export const ParticleCanvas: React.FC<ParticleCanvasProps> = ({
 
   return (
     <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-      {/* Custom Cursor Glow */}
+      {/* Custom Cyberpunk Cursor Glow */}
       <div
         ref={cursorGlowRef}
         aria-hidden="true"
-        className="absolute top-0 left-0 w-[360px] h-[360px] rounded-full pointer-events-none opacity-65"
+        className="absolute top-0 left-0 w-[360px] h-[360px] rounded-full pointer-events-none opacity-75"
         style={{
           background:
-            'radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(167, 139, 250, 0.06) 42%, rgba(0, 0, 0, 0) 70%)',
+            'radial-gradient(circle, rgba(0, 240, 255, 0.16) 0%, rgba(255, 42, 133, 0.08) 42%, rgba(0, 0, 0, 0) 70%)',
           willChange: 'transform',
         }}
       />

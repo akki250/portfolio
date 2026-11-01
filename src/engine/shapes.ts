@@ -72,7 +72,7 @@ const GLYPH_5X7: Record<string, string[]> = {
  * Reused by both the default "DALA" Name shape and the interactive Type-to-Morph input.
  */
 export function generateTextShape(text: string, count = PARTICLE_COUNT): Vec3[] {
-  const clean = (text.trim().toUpperCase() || 'DALA').slice(0, 12);
+  const clean = (text.trim().toUpperCase() || 'AAKARSH').slice(0, 12);
   const rng = createSeededRng(clean.split('').reduce((acc, ch) => acc * 31 + ch.charCodeAt(0), 101));
 
   // Collect active voxel cells across all characters
@@ -83,7 +83,7 @@ export function generateTextShape(text: string, count = PARTICLE_COUNT): Vec3[] 
 
   for (let cIdx = 0; cIdx < clean.length; cIdx++) {
     const ch = clean[cIdx];
-    const bitmap = GLYPH_5X7[ch] || GLYPH_5X7['*'] || GLYPH_5X7['D'];
+    const bitmap = GLYPH_5X7[ch] || GLYPH_5X7['*'] || GLYPH_5X7['A'];
     const offsetX = cIdx * (charWidth + charGap) - totalWidth / 2;
 
     for (let row = 0; row < 7; row++) {
@@ -100,11 +100,11 @@ export function generateTextShape(text: string, count = PARTICLE_COUNT): Vec3[] 
 
   // Fallback if all spaces
   if (activeVoxels.length === 0) {
-    return generateTextShape('DALA', count);
+    return generateTextShape('AAKARSH', count);
   }
 
-  // Scale so wide words fit gracefully inside [-1.0, 1.0] radius without overlapping side columns
-  const scaleFactor = Math.min(0.088, 1.95 / Math.max(10, totalWidth));
+  // Scale so wide words fit gracefully inside [-0.95, 0.95] radius without overlapping side columns
+  const scaleFactor = Math.min(0.088, 1.88 / Math.max(10, totalWidth));
   const points: Vec3[] = new Array(count);
 
   // 88% of particles form the crisp extruded 3D letterforms, 12% form a subtle orbital halo
@@ -372,7 +372,7 @@ export function generateTorusShape(count = PARTICLE_COUNT): Vec3[] {
 export function buildCanonicalShapes(count = PARTICLE_COUNT): Record<ShapeId, Vec3[]> {
   return {
     brain: generateBrainShape(count),
-    name: generateTextShape('DALA', count),
+    name: generateTextShape('AAKARSH', count),
     chip: generateChipShape(count),
     bulb: generateBulbShape(count),
     torus: generateTorusShape(count),

@@ -1,0 +1,118 @@
+/* ==========================================================================
+   Shader.se-Inspired Glassmorphism, Refractive Borders & Spotlight Effects
+   (visual-effects.css)
+   NOTE: Avoids CSS backdrop-filter over active WebGL canvas so software
+   WebGL rendering in headless browsers remains ultra-fast and stall-free.
+   ========================================================================== */
+
+:root {
+  --pointer-x: 50vw;
+  --pointer-y: 50vh;
+  --pointer-nx: 0.5;
+  --pointer-ny: 0.5;
+}
+
+/* Top & Bottom Shader Studio Glass Bar */
+.shader-glass-bar {
+  background: linear-gradient(
+    180deg,
+    rgba(11, 10, 26, 0.86) 0%,
+    rgba(6, 6, 16, 0.92) 100%
+  );
+  border: 1px solid rgba(139, 92, 246, 0.28);
+  border-radius: 14px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 0 24px rgba(124, 58, 237, 0.08),
+    0 16px 40px -8px rgba(0, 0, 0, 0.78);
+}
+
+/* Refractive Liquid Glass Card with Pointer Spotlight Tracking */
+.shader-glass-card {
+  position: relative;
+  background:
+    radial-gradient(
+      520px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+      rgba(168, 85, 247, 0.13),
+      rgba(0, 240, 255, 0.05) 38%,
+      transparent 70%
+    ),
+    linear-gradient(
+      155deg,
+      rgba(13, 12, 30, 0.84) 0%,
+      rgba(7, 7, 19, 0.90) 100%
+    );
+  border: 1px solid rgba(139, 92, 246, 0.26);
+  border-radius: 16px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -1px 0 rgba(0, 240, 255, 0.10),
+    0 20px 48px -12px rgba(2, 2, 10, 0.82);
+  transition:
+    border-color 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shader-glass-card:hover {
+  border-color: rgba(0, 240, 255, 0.48);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 0 28px rgba(139, 92, 246, 0.18),
+    0 22px 52px -12px rgba(0, 0, 0, 0.88);
+}
+
+/* Electric Ultraviolet + Cyan Primary CTA Button */
+.shader-btn-primary {
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 52%, #06b6d4 100%);
+  color: #ffffff;
+  border: 1px solid rgba(192, 132, 252, 0.55);
+  border-radius: 10px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 0 22px rgba(124, 58, 237, 0.42);
+}
+
+.shader-btn-primary:hover {
+  border-color: #00f0ff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 0 28px rgba(0, 240, 255, 0.45),
+    0 0 18px rgba(168, 85, 247, 0.45);
+}
+
+/* Refractive Secondary Button */
+.shader-btn-secondary {
+  background: rgba(18, 16, 40, 0.78);
+  color: #e2e8f0;
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: 10px;
+  box-shadow: inset 0 0 14px rgba(0, 240, 255, 0.12);
+}
+
+.shader-btn-secondary:hover {
+  background: rgba(124, 58, 237, 0.22);
+  border-color: #00f0ff;
+  color: #ffffff;
+}
+
+/* Subtle Interactive Pill / Control Surface */
+.shader-control-surface {
+  background: rgba(13, 12, 30, 0.80);
+  border: 1px solid rgba(139, 92, 246, 0.26);
+  color: #e2e8f0;
+  border-radius: 9px;
+}
+
+.shader-control-surface:hover {
+  background: rgba(139, 92, 246, 0.18);
+  border-color: rgba(0, 240, 255, 0.52);
+  color: #ffffff;
+}
+
+.shader-text-gradient {
+  background: linear-gradient(125deg, #ffffff 0%, #e9d5ff 45%, #67e8f9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

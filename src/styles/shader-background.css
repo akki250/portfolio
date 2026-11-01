@@ -1,0 +1,61 @@
+/* ==========================================================================
+   Site-Wide Persistent WebGL Shader Background Styles (shader-background.css)
+   ========================================================================== */
+
+.shader-background-root {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background-color: #03030a;
+}
+
+.shader-root-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  pointer-events: none;
+}
+
+.shader-atmospheric-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 45%, transparent 32%, rgba(3, 3, 12, 0.58) 100%),
+    linear-gradient(180deg, rgba(3, 3, 10, 0.36) 0%, transparent 18%, transparent 82%, rgba(3, 3, 10, 0.52) 100%);
+}
+
+.shader-subtle-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.75) 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+}
+
+/* Fallback surface when WebGL is disabled or lost */
+.shader-fallback-surface {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background: radial-gradient(
+      circle at 65% 28%,
+      color-mix(in srgb, var(--fallback-primary, #7c3aed) 36%, transparent) 0%,
+      transparent 58%
+    ),
+    radial-gradient(
+      circle at 28% 76%,
+      color-mix(in srgb, var(--fallback-accent, #00f0ff) 28%, transparent) 0%,
+      transparent 55%
+    ),
+    linear-gradient(180deg, #04040d 0%, #070616 55%, #030309 100%);
+}

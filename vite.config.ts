@@ -1,11 +1,27 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
+import fs from 'fs';
 import path from 'path';
-import {defineConfig} from 'vite';
+import {defineConfig, Plugin} from 'vite';
+
+function glslRawPlugin(): Plugin {
+  return {
+    name: 'vite-plugin-glsl-raw',
+    enforce: 'pre',
+    load(id) {
+      const cleanId = id.split('?')[0];
+      if (cleanId.endsWith('.frag') || cleanId.endsWith('.vert') || cleanId.endsWith('.glsl')) {
+        const code = fs.readFileSync(cleanId, 'utf-8');
+        return `export default ${JSON.stringify(code)};`;
+      }
+      return null;
+    },
+  };
+}
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [glslRawPlugin(), react(), tailwindcss()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
@@ -20,3 +36,4 @@ export default defineConfig(() => {
     },
   };
 });
+

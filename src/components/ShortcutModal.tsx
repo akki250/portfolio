@@ -42,21 +42,21 @@ export const ShortcutModal: React.FC<ShortcutModalProps> = ({
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-xl rounded-2xl bg-zinc-950/95 border border-zinc-800/90 p-6 shadow-2xl text-zinc-100"
+        className="cyber-card relative w-full max-w-xl p-6 text-zinc-100"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between pb-4 border-b border-zinc-800/80">
+        <div className="flex items-center justify-between pb-4 border-b border-cyan-500/25">
           <div className="flex items-center gap-2.5">
-            <Keyboard className="w-5 h-5 text-sky-400" />
+            <Keyboard className="w-5 h-5 text-[#fcee0a]" />
             <h2 id="shortcut-modal-title" className="text-lg font-semibold tracking-tight font-display">
-              Interactive Controls & Keyboard Shortcuts
+              Interactive Controls &amp; Keyboard Shortcuts
             </h2>
           </div>
           <button
             type="button"
             onClick={onClose}
             aria-label="Close shortcuts overlay"
-            className="p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-800/70 transition-colors"
+            className="cyber-control p-1.5 rounded text-zinc-300 hover:text-white transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -66,14 +66,14 @@ export const ShortcutModal: React.FC<ShortcutModalProps> = ({
           {shortcuts.map((item, idx) => (
             <div
               key={idx}
-              className="flex items-center justify-between gap-4 py-2 border-b border-zinc-900 last:border-none text-sm"
+              className="flex items-center justify-between gap-4 py-2 border-b border-cyan-500/15 last:border-none text-sm"
             >
-              <span className="text-zinc-300">{item.description}</span>
+              <span className="text-zinc-200">{item.description}</span>
               <div className="flex items-center gap-1 shrink-0">
                 {item.keys.map((k) => (
                   <kbd
                     key={k}
-                    className="px-2 py-1 text-xs font-mono bg-zinc-900 border border-zinc-700/80 rounded-md text-zinc-200 whitespace-nowrap"
+                    className="px-2 py-1 text-xs font-mono bg-zinc-950 border border-cyan-400/40 rounded text-[#fcee0a] whitespace-nowrap"
                   >
                     {k}
                   </kbd>
@@ -83,7 +83,7 @@ export const ShortcutModal: React.FC<ShortcutModalProps> = ({
           ))}
         </div>
 
-        <div className="mt-6 pt-4 border-t border-zinc-800/80 flex flex-wrap items-center justify-between gap-3">
+        <div className="mt-6 pt-4 border-t border-cyan-500/25 flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-1.5">
             {SHAPE_ORDER.map((shape, idx) => (
               <button
@@ -92,7 +92,7 @@ export const ShortcutModal: React.FC<ShortcutModalProps> = ({
                 onClick={() => {
                   onSelectShape(shape);
                 }}
-                className="spring-interactive px-2.5 py-1.5 rounded-lg text-xs font-mono bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 capitalize whitespace-nowrap"
+                className="spring-interactive cyber-control px-2.5 py-1.5 rounded text-xs font-mono capitalize whitespace-nowrap"
               >
                 {idx + 1}. {shape}
               </button>
@@ -103,7 +103,7 @@ export const ShortcutModal: React.FC<ShortcutModalProps> = ({
             <button
               type="button"
               onClick={onTogglePause}
-              className="spring-interactive px-3 py-1.5 rounded-lg text-xs font-medium bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-200 whitespace-nowrap"
+              className="spring-interactive cyber-control px-3 py-1.5 rounded text-xs font-medium whitespace-nowrap"
             >
               {isPaused ? 'Resume Motion' : 'Pause Motion'}
             </button>
@@ -113,7 +113,7 @@ export const ShortcutModal: React.FC<ShortcutModalProps> = ({
                 onTriggerKonami();
                 onClose();
               }}
-              className="spring-interactive flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-sky-500/15 hover:bg-sky-500/25 border border-sky-500/40 text-sky-300 whitespace-nowrap"
+              className="spring-interactive cyber-btn-yellow flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold whitespace-nowrap"
             >
               <Sparkles className="w-3.5 h-3.5" />
               Trigger Konami Rainbow

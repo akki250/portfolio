@@ -125,7 +125,7 @@ enum ConstellationMath {
         return easeInOutCubic(normalized)
     }
 
-    static func scrubTextMetrics(scrollProgress: Double, center: Double, hold: Double = 0.055, fade: Double = 0.14) -> (opacity: Double, offsetY: Double) {
+    static func scrubTextMetrics(scrollProgress: Double, center: Double, hold: Double = 0.075, fade: Double = 0.085) -> (opacity: Double, offsetY: Double) {
         let delta = scrollProgress - center
         let absDelta = abs(delta)
         if absDelta <= hold {
@@ -143,7 +143,7 @@ enum ConstellationMath {
     // Reused Name-Shape & Type-to-Morph Bitmap Renderer using CoreGraphics
     static func generateTextPoints(_ text: String, count: Int = PARTICLE_COUNT) -> [SIMD3<Double>] {
         let clean = String(text.trimmingCharacters(in: .whitespacesAndNewlines).uppercased().prefix(12))
-        let word = clean.isEmpty ? "DALA" : clean
+        let word = clean.isEmpty ? "AAKARSH" : clean
         let width = 320
         let height = 96
 
@@ -165,7 +165,7 @@ enum ConstellationMath {
         let nsText = NSAttributedString(
             string: word,
             attributes: [
-                .font: NSFont.systemFont(ofSize: 54, weight: .heavy),
+                .font: NSFont.systemFont(ofSize: 48, weight: .heavy),
                 .foregroundColor: NSColor.white
             ]
         )
@@ -185,8 +185,8 @@ enum ConstellationMath {
             for py in stride(from: 0, to: height, by: 2) {
                 for px in stride(from: 0, to: width, by: 2) {
                     if buffer[py * width + px] > 110 {
-                        let nx = (Double(px) / Double(width) - 0.5) * 2.5
-                        let ny = (Double(py) / Double(height) - 0.5) * 0.85
+                        let nx = (Double(px) / Double(width) - 0.5) * 2.0
+                        let ny = (Double(py) / Double(height) - 0.5) * 0.78
                         activePixels.append((nx, ny))
                     }
                 }
@@ -210,8 +210,8 @@ enum ConstellationMath {
                 result.append(SIMD3(sample.0 + jx, sample.1 + jy, dz))
             } else {
                 let angle = Double(i) * 2.39996
-                let r = 0.95 + Double(i % 100) * 0.006
-                result.append(SIMD3(cos(angle) * r * 1.2, sin(angle) * r * 0.65, Double(i % 40 - 20) * 0.03))
+                let r = 0.82 + Double(i % 100) * 0.005
+                result.append(SIMD3(cos(angle) * r * 1.05, sin(angle) * r * 0.58, Double(i % 40 - 20) * 0.025))
             }
         }
         return result
@@ -220,7 +220,7 @@ enum ConstellationMath {
     static func generateCanonicalShape(_ shape: ConstellationShape, count: Int = PARTICLE_COUNT) -> [SIMD3<Double>] {
         switch shape {
         case .name:
-            return generateTextPoints("DALA", count: count)
+            return generateTextPoints("AAKARSH", count: count)
         case .brain:
             return (0..<count).map { i in
                 let t = Double(i) / Double(max(1, count))
@@ -349,18 +349,20 @@ public struct PortfolioView: View {
     private let konamiSequence = ["UP", "UP", "DOWN", "DOWN", "LEFT", "RIGHT", "LEFT", "RIGHT", "B", "A"]
 
     private let keyframes: [TimelineKeyframe] = [
-        TimelineKeyframe(id: "overview", label: "Overview", progress: 0.00, shape: .brain, offsetX: 0.22, scale: 1.05, rotationY: 0.25, rotationX: 0.15, opacity: 0.96, accent: SIMDColor(r: 0.22, g: 0.74, b: 0.97), bgTint: SIMDColor(r: 0.03, g: 0.05, b: 0.10)),
-        TimelineKeyframe(id: "identity", label: "Identity", progress: 0.25, shape: .name,  offsetX: -0.22, scale: 1.12, rotationY: -0.18, rotationX: 0.06, opacity: 1.00, accent: SIMDColor(r: 0.65, g: 0.55, b: 0.98), bgTint: SIMDColor(r: 0.05, g: 0.04, b: 0.10)),
-        TimelineKeyframe(id: "projects", label: "Projects", progress: 0.50, shape: .chip,  offsetX: 0.24, scale: 1.00, rotationY: 0.42, rotationX: 0.28, opacity: 0.92, accent: SIMDColor(r: 0.20, g: 0.83, b: 0.60), bgTint: SIMDColor(r: 0.02, g: 0.07, b: 0.06)),
-        TimelineKeyframe(id: "lab",      label: "Lab",      progress: 0.75, shape: .bulb,  offsetX: -0.22, scale: 1.08, rotationY: -0.35, rotationX: 0.12, opacity: 0.95, accent: SIMDColor(r: 0.98, g: 0.75, b: 0.14), bgTint: SIMDColor(r: 0.09, g: 0.06, b: 0.03)),
-        TimelineKeyframe(id: "contact",  label: "Contact",  progress: 1.00, shape: .torus, offsetX: 0.18, scale: 1.15, rotationY: 0.65, rotationX: 0.35, opacity: 0.98, accent: SIMDColor(r: 0.96, g: 0.25, b: 0.37), bgTint: SIMDColor(r: 0.09, g: 0.03, b: 0.06))
+        TimelineKeyframe(id: "overview", label: "Overview", progress: 0.00, shape: .brain, offsetX: 0.22, scale: 1.05, rotationY: 0.25, rotationX: 0.15, opacity: 0.98, accent: SIMDColor(r: 0.00, g: 0.94, b: 1.00), bgTint: SIMDColor(r: 0.03, g: 0.04, b: 0.09)),
+        TimelineKeyframe(id: "identity", label: "Experience", progress: 0.25, shape: .name,  offsetX: -0.22, scale: 0.90, rotationY: -0.14, rotationX: 0.06, opacity: 1.00, accent: SIMDColor(r: 0.99, g: 0.93, b: 0.04), bgTint: SIMDColor(r: 0.07, g: 0.05, b: 0.07)),
+        TimelineKeyframe(id: "projects", label: "Projects", progress: 0.50, shape: .chip,  offsetX: 0.24, scale: 1.00, rotationY: 0.42, rotationX: 0.28, opacity: 0.96, accent: SIMDColor(r: 1.00, g: 0.16, b: 0.52), bgTint: SIMDColor(r: 0.09, g: 0.03, b: 0.10)),
+        TimelineKeyframe(id: "lab",      label: "Skills & Lab", progress: 0.75, shape: .bulb,  offsetX: -0.22, scale: 1.08, rotationY: -0.35, rotationX: 0.12, opacity: 0.97, accent: SIMDColor(r: 0.00, g: 1.00, b: 0.62), bgTint: SIMDColor(r: 0.02, g: 0.07, b: 0.09)),
+        TimelineKeyframe(id: "contact",  label: "Contact",  progress: 1.00, shape: .torus, offsetX: 0.18, scale: 1.15, rotationY: 0.65, rotationX: 0.35, opacity: 0.98, accent: SIMDColor(r: 0.72, g: 0.36, b: 1.00), bgTint: SIMDColor(r: 0.05, g: 0.03, b: 0.11))
     ]
 
     private let projects: [ProjectCardItem] = [
-        ProjectCardItem(id: "recircuit", title: "ReCircuit", subtitle: "Closed-Loop Hardware Telemetry", summary: "Circular PCB supply-chain recovery engine with sub-millimeter vision sorting.", year: "2026", metrics: "99.4% Yield · 140K Boards", relatedShape: .torus, accent: SIMDColor(r: 0.20, g: 0.83, b: 0.60)),
-        ProjectCardItem(id: "landline", title: "Landline", subtitle: "Deterministic Low-Latency Mesh", summary: "Bare-metal silicon packet routing protocol built for acoustic & tactile studio links.", year: "2025", metrics: "0.4ms Jitter · M4 Metal", relatedShape: .chip, accent: SIMDColor(r: 0.22, g: 0.74, b: 0.97)),
-        ProjectCardItem(id: "cortex", title: "Cortex Studio", subtitle: "Spatial Neural Constellation", summary: "Real-time 120fps force-directed graph synthesizer for neural audio weights.", year: "2025", metrics: "2.2K Nodes · Zero Alloc", relatedShape: .brain, accent: SIMDColor(r: 0.65, g: 0.55, b: 0.98)),
-        ProjectCardItem(id: "lumina", title: "Lumina Field", subtitle: "Photonic Shader Workbench", summary: "Volumetric filament raymarching and physically based spectral dispersion on macOS.", year: "2024", metrics: "60fps Locked · SwiftUI Canvas", relatedShape: .bulb, accent: SIMDColor(r: 0.98, g: 0.75, b: 0.14))
+        ProjectCardItem(id: "recircuit", title: "ReCircuit", subtitle: "React 19 · FastAPI · MongoDB · Stripe", summary: "E-waste platform that classifies waste from photos and matches users with recyclers via a marketplace + INR Stripe Checkout.", year: "2026", metrics: "AI Classifier · Stripe INR", relatedShape: .torus, accent: SIMDColor(r: 0.20, g: 0.83, b: 0.60)),
+        ProjectCardItem(id: "movemycar", title: "Move My Car", subtitle: "React · TS · Express · PostgreSQL · Twilio", summary: "Full-stack QR-code system enabling masked owner calling via Twilio without exposing phone numbers.", year: "2025", metrics: "Twilio Masked Call · Multi-QR", relatedShape: .bulb, accent: SIMDColor(r: 0.98, g: 0.75, b: 0.14)),
+        ProjectCardItem(id: "landline", title: "Smart Landline Automation", subtitle: "ESP32 · C++ · Arduino · LDR · Servos", summary: "Detects flashing ring light with an LDR sensor and drives two servos to lift receiver, press #, and hang up.", year: "2025", metrics: "Non-Invasive LDR · Dual Servo", relatedShape: .chip, accent: SIMDColor(r: 0.22, g: 0.74, b: 0.97)),
+        ProjectCardItem(id: "fire", title: "Automatic Fire Extinguisher", subtitle: "Arduino · C++ · Flame Sensors · Relay", summary: "Triangulates fire with two flame sensors, aims a servo nozzle, and triggers a relay-driven water pump.", year: "2025", metrics: "Dual Flame Sensor · Relay Pump", relatedShape: .bulb, accent: SIMDColor(r: 0.96, g: 0.25, b: 0.37)),
+        ProjectCardItem(id: "esp32audio", title: "ESP32 Live Audio Streaming", subtitle: "ESP32 · I²S Mic · iPhone Stream", summary: "Consent-based, authenticated live audio streaming from an ESP32 mic to iPhone with physical mute switch and LED.", year: "WIP", metrics: "I²S Stream · Hardware Cut-Off", relatedShape: .brain, accent: SIMDColor(r: 0.65, g: 0.55, b: 0.98)),
+        ProjectCardItem(id: "games", title: "Browser Games Suite", subtitle: "Beach Buggy · Wheelspin vs Wheelspin", summary: "Playable web arcade games built from scratch with custom 60fps physics and collision loops.", year: "2025", metrics: "60fps Canvas · Custom Physics", relatedShape: .torus, accent: SIMDColor(r: 0.22, g: 0.74, b: 0.97))
     ]
 
     public init() {}
@@ -754,16 +756,19 @@ public struct PortfolioView: View {
             if s0.opacity > 0.01 {
                 HStack {
                     VStack(alignment: .leading, spacing: 14) {
-                        Text("01 · SPATIAL SYSTEMS & GRAPHICS ARCHITECTURE")
+                        Text("01 · B.TECH COMPUTER ENGINEERING · NMIMS MPSTME, NAVI MUMBAI")
                             .font(.system(size: 11, weight: .semibold, design: .monospaced))
                             .foregroundStyle(accent.swiftUIColor)
-                        Text("Tactile particle constellations engineered at 60fps.")
-                            .font(.system(size: 42, weight: .bold, design: .rounded))
+                        Text("Aakarsh Yadav")
+                            .font(.system(size: 44, weight: .bold, design: .rounded))
                             .foregroundStyle(.white)
-                        Text("Every particle responds to cursor force fields, continuous scroll-scrubbed keyframe morphing, and real-time glyph synthesis.")
+                        Text("Full-Stack Web & Embedded Hardware Engineer. Building React 19/FastAPI platforms, Twilio masked-calling QR systems, and ESP32/Arduino robotics.")
                             .font(.system(size: 15))
-                            .foregroundStyle(.white.opacity(0.75))
-                            .frame(maxWidth: 440, alignment: .leading)
+                            .foregroundStyle(.white.opacity(0.78))
+                            .frame(maxWidth: 460, alignment: .leading)
+                        Text("mr.aakarshyadav@gmail.com · +91 9607555095 · github.com/akki250 · linkedin.com/in/aakarsh-yadav")
+                            .font(.system(size: 12, design: .monospaced))
+                            .foregroundStyle(.white.opacity(0.6))
                     }
                     Spacer()
                 }
@@ -772,21 +777,21 @@ public struct PortfolioView: View {
                 .offset(y: s0.offsetY)
             }
 
-            // Stage 1: Identity
+            // Stage 1: Experience & Education
             if s1.opacity > 0.01 {
                 HStack {
                     Spacer()
                     VStack(alignment: .leading, spacing: 14) {
-                        Text("02 · IDENTITY & GLYPH SYNTHESIS")
+                        Text("02 · EXPERIENCE & EDUCATION — IEEE STUDENT BRANCH")
                             .font(.system(size: 11, weight: .semibold, design: .monospaced))
                             .foregroundStyle(accent.swiftUIColor)
-                        Text("Hardware-sympathetic motion without framework bloat.")
-                            .font(.system(size: 36, weight: .bold, design: .rounded))
+                        Text("IEEE MPSTME & Computer Engineering.")
+                            .font(.system(size: 34, weight: .bold, design: .rounded))
                             .foregroundStyle(.white)
-                        Text("Each particle carries an individual phase delay so morphs ripple organically between the cerebral cortex, typographic glyphs, and silicon topography.")
-                            .font(.system(size: 15))
-                            .foregroundStyle(.white.opacity(0.75))
-                            .frame(maxWidth: 440, alignment: .leading)
+                        Text("• Web Development & Content Member, IEEE Student Branch (NMIMS MPSTME Navi Mumbai): Built and maintained the branch site; diagnosed a WordPress/Avada base64 SEO-spam compromise and rebuilt affected pages in clean custom HTML with a circuit-trace theme.\n• B.Tech Computer Engineering (1st Year), NMIMS MPSTME.")
+                            .font(.system(size: 14))
+                            .foregroundStyle(.white.opacity(0.78))
+                            .frame(maxWidth: 460, alignment: .leading)
                     }
                 }
                 .padding(.horizontal, 56)
@@ -797,16 +802,16 @@ public struct PortfolioView: View {
             // Stage 2: Projects with Hover Shape & Tint Reactions
             if s2.opacity > 0.01 {
                 HStack {
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("03 · SELECTED WORKS — HOVER TO MORPH")
+                    VStack(alignment: .leading, spacing: 14) {
+                        Text("03 · FULL-STACK & EMBEDDED PROJECTS — HOVER TO MORPH")
                             .font(.system(size: 11, weight: .semibold, design: .monospaced))
                             .foregroundStyle(accent.swiftUIColor)
-                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
                             ForEach(projects) { item in
-                                VStack(alignment: .leading, spacing: 6) {
+                                VStack(alignment: .leading, spacing: 5) {
                                     HStack {
                                         Text(item.title)
-                                            .font(.system(size: 16, weight: .bold))
+                                            .font(.system(size: 15, weight: .bold))
                                             .foregroundStyle(.white)
                                         Spacer()
                                         Text(item.year)
@@ -814,7 +819,7 @@ public struct PortfolioView: View {
                                             .foregroundStyle(.white.opacity(0.5))
                                     }
                                     Text(item.summary)
-                                        .font(.system(size: 12))
+                                        .font(.system(size: 11))
                                         .foregroundStyle(.white.opacity(0.72))
                                         .lineLimit(2)
                                     HStack {
@@ -827,7 +832,7 @@ public struct PortfolioView: View {
                                             .foregroundStyle(item.accent.swiftUIColor)
                                     }
                                 }
-                                .padding(14)
+                                .padding(12)
                                 .background(Color.white.opacity(0.05))
                                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                                 .overlay(
@@ -843,7 +848,7 @@ public struct PortfolioView: View {
                                 }
                             }
                         }
-                        .frame(maxWidth: 560)
+                        .frame(maxWidth: 580)
                     }
                     Spacer()
                 }
@@ -852,17 +857,22 @@ public struct PortfolioView: View {
                 .offset(y: s2.offsetY)
             }
 
-            // Stage 3: Lab
+            // Stage 3: Skills & Lab
             if s3.opacity > 0.01 {
                 HStack {
                     Spacer()
                     VStack(alignment: .leading, spacing: 14) {
-                        Text("04 · INTERACTIVE CONSTELLATION LAB")
+                        Text("04 · TECHNICAL STACK & CONSTELLATION LAB")
                             .font(.system(size: 11, weight: .semibold, design: .monospaced))
                             .foregroundStyle(accent.swiftUIColor)
-                        Text("Tune force fields & batching density.")
-                            .font(.system(size: 34, weight: .bold, design: .rounded))
+                        Text("Python · TS/JS · C/C++ · React · FastAPI · ESP32")
+                            .font(.system(size: 28, weight: .bold, design: .rounded))
                             .foregroundStyle(.white)
+                            .frame(maxWidth: 460, alignment: .leading)
+                        Text("Data: MongoDB, PostgreSQL · Hardware: ESP32, Arduino, I²S, LDR/Flame Sensors, Servos, Relays · Interests: Motorsports, Original poetry, Badminton.")
+                            .font(.system(size: 14))
+                            .foregroundStyle(.white.opacity(0.75))
+                            .frame(maxWidth: 460, alignment: .leading)
                         HStack(spacing: 12) {
                             Button(swirlMode ? "Mode: Vortex Swirl" : "Mode: Radial Repel") {
                                 withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
@@ -890,12 +900,16 @@ public struct PortfolioView: View {
             if s4.opacity > 0.01 {
                 HStack {
                     VStack(alignment: .leading, spacing: 14) {
-                        Text("05 · CONTINUOUS HORIZON")
+                        Text("05 · DIRECT CONTACT")
                             .font(.system(size: 11, weight: .semibold, design: .monospaced))
                             .foregroundStyle(accent.swiftUIColor)
-                        Text("Built for macOS 14+ & ProMotion displays.")
+                        Text("Connect with Aakarsh Yadav.")
                             .font(.system(size: 38, weight: .bold, design: .rounded))
                             .foregroundStyle(.white)
+                        Text("mr.aakarshyadav@gmail.com · +91 9607555095 · github.com/akki250 · linkedin.com/in/aakarsh-yadav")
+                            .font(.system(size: 14, design: .monospaced))
+                            .foregroundStyle(.white.opacity(0.78))
+                            .frame(maxWidth: 520, alignment: .leading)
                         Button("Return to Origin (0%)") {
                             targetScrollProgress = 0.0
                             shapeOverride = nil
@@ -917,7 +931,7 @@ public struct PortfolioView: View {
     private func topNavigationBar(accent: SIMDColor) -> some View {
         let activeIdx = currentTimelineState().activeIndex
         return HStack(spacing: 24) {
-            Text("Dala")
+            Text("Aakarsh Yadav")
                 .font(.system(size: 18, weight: .bold, design: .rounded))
                 .foregroundStyle(.white)
 
@@ -1071,9 +1085,11 @@ public struct PortfolioView: View {
 
     private func installEventMonitors() {
         NSEvent.addLocalMonitorForEvents(matching: .scrollWheel) { event in
-            let delta = Double(event.scrollingDeltaY) * (event.hasPreciseScrollingDeltas ? 0.00045 : 0.004)
+            // Calibrated so 20 scroll gestures (0.0125 per gesture) advances one full transition (0.25 progress)
+            let rawDelta = Double(event.scrollingDeltaY) * (event.hasPreciseScrollingDeltas ? 0.000125 : 0.00125)
+            let step = ConstellationMath.clamp(rawDelta, -0.0125, 0.0125)
             shapeOverride = nil
-            targetScrollProgress = ConstellationMath.clamp(targetScrollProgress - delta, 0.0, 1.0)
+            targetScrollProgress = ConstellationMath.clamp(targetScrollProgress - step, 0.0, 1.0)
             return event
         }
 
