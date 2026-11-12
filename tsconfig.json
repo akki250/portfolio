@@ -17,6 +17,12 @@
     "allowJs": true,
     "jsx": "react-jsx",
     "paths": {
+      "@designcodeio/threeui/style.css": [
+        "./src/shaders/threeui.css"
+      ],
+      "@designcodeio/threeui": [
+        "./src/shaders/index.ts"
+      ],
       "@/*": [
         "./*"
       ]

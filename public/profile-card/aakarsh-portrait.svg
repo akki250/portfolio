@@ -1,0 +1,245 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="850" viewBox="0 0 680 850" fill="none">
+  <defs>
+    <!-- Studio portrait lighting gradients (transparent background above/around figure for holo foil) -->
+    <linearGradient id="skinBase" x1="250" y1="160" x2="420" y2="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#e2b594" />
+      <stop offset="45%" stop-color="#c6926e" />
+      <stop offset="82%" stop-color="#986749" />
+      <stop offset="100%" stop-color="#6e4630" />
+    </linearGradient>
+    <linearGradient id="skinShadow" x1="330" y1="180" x2="445" y2="410" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#5a3624" stop-opacity="0.1" />
+      <stop offset="55%" stop-color="#3c2115" stop-opacity="0.48" />
+      <stop offset="100%" stop-color="#1a0d09" stop-opacity="0.78" />
+    </linearGradient>
+    <linearGradient id="neckGrad" x1="290" y1="380" x2="395" y2="495" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a87556" />
+      <stop offset="55%" stop-color="#7c5038" />
+      <stop offset="100%" stop-color="#472b1d" />
+    </linearGradient>
+    <linearGradient id="hairGrad" x1="235" y1="115" x2="435" y2="275" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2a303c" />
+      <stop offset="35%" stop-color="#151922" />
+      <stop offset="100%" stop-color="#090b10" />
+    </linearGradient>
+    <linearGradient id="jacketLeft" x1="120" y1="460" x2="350" y2="850" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#272c3a" />
+      <stop offset="45%" stop-color="#171b26" />
+      <stop offset="100%" stop-color="#0b0d14" />
+    </linearGradient>
+    <linearGradient id="jacketRight" x1="340" y1="460" x2="580" y2="850" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1c202c" />
+      <stop offset="55%" stop-color="#10131b" />
+      <stop offset="100%" stop-color="#07090e" />
+    </linearGradient>
+    <linearGradient id="hoodieInner" x1="250" y1="440" x2="430" y2="760" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1e222d" />
+      <stop offset="100%" stop-color="#0b0d13" />
+    </linearGradient>
+    <linearGradient id="teeShirt" x1="300" y1="480" x2="380" y2="680" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#e4e8ec" />
+      <stop offset="100%" stop-color="#9aa4b0" />
+    </linearGradient>
+    <linearGradient id="rimWarm" x1="90" y1="140" x2="320" y2="820" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ff6e52" />
+      <stop offset="50%" stop-color="#e0231c" />
+      <stop offset="100%" stop-color="#e0231c" stop-opacity="0.2" />
+    </linearGradient>
+    <linearGradient id="rimCool" x1="580" y1="160" x2="380" y2="820" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a5f3fc" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#dfe7e0" stop-opacity="0.15" />
+    </linearGradient>
+    <linearGradient id="lensReflect" x1="255" y1="262" x2="325" y2="306" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.32" />
+      <stop offset="50%" stop-color="#0f172a" stop-opacity="0.68" />
+      <stop offset="100%" stop-color="#e0231c" stop-opacity="0.28" />
+    </linearGradient>
+  </defs>
+
+  <!-- Cut-out shoulders & structured blazer/tech-jacket (transparent above y=125 and around shoulders) -->
+  <path
+    d="M64 850 C76 632 138 518 238 474 L274 434 L340 468 L406 434 L442 474 C542 518 604 632 616 850 Z"
+    fill="url(#jacketLeft)"
+  />
+  <path
+    d="M340 468 L406 434 L442 474 C542 518 604 632 616 850 H340 Z"
+    fill="url(#jacketRight)"
+  />
+
+  <!-- Inner hoodie & crew-neck layer -->
+  <path
+    d="M214 484 L268 430 L340 560 L412 430 L466 484 L424 720 L340 774 L256 720 Z"
+    fill="url(#hoodieInner)"
+    stroke="#ffffff"
+    stroke-opacity="0.08"
+    stroke-width="1.5"
+  />
+
+  <!-- Crisp white/silver crew-neck tee under hoodie -->
+  <path
+    d="M292 468 Q340 506 388 468 L372 586 L340 624 L308 586 Z"
+    fill="url(#teeShirt)"
+  />
+
+  <!-- Neck & natural clavicle shadow -->
+  <path
+    d="M292 382 H388 V468 Q340 502 292 468 Z"
+    fill="url(#neckGrad)"
+  />
+  <!-- Under-chin cast shadow -->
+  <path
+    d="M292 386 Q340 442 388 386 V428 Q340 466 292 428 Z"
+    fill="#24130b"
+    fill-opacity="0.62"
+  />
+
+  <!-- Jacket lapels & seam details -->
+  <path
+    d="M268 432 L210 544 L252 562 L232 718 L340 774"
+    stroke="#ffffff"
+    stroke-opacity="0.12"
+    stroke-width="1.6"
+    fill="none"
+  />
+  <path
+    d="M412 432 L470 544 L428 562 L448 718 L340 774"
+    stroke="#ffffff"
+    stroke-opacity="0.08"
+    stroke-width="1.6"
+    fill="none"
+  />
+
+  <!-- Subtle glowing circuit accent on lapel -->
+  <g stroke="#e0231c" stroke-opacity="0.72" stroke-width="2" stroke-linecap="round">
+    <path d="M162 590 H214 L244 626 V712" />
+    <circle cx="162" cy="590" r="3.5" fill="#ff5a3c" />
+    <circle cx="244" cy="712" r="3.5" fill="#ff5a3c" />
+  </g>
+  <g stroke="#38bdf8" stroke-opacity="0.5" stroke-width="1.8" stroke-linecap="round">
+    <path d="M518 590 H466 L436 626 V712" />
+    <circle cx="518" cy="590" r="3.2" fill="#38bdf8" />
+    <circle cx="436" cy="712" r="3.2" fill="#38bdf8" />
+  </g>
+
+  <!-- Studio rim highlights on outer shoulders -->
+  <path
+    d="M68 850 C80 636 140 520 238 476 L272 434"
+    stroke="url(#rimWarm)"
+    stroke-width="3.5"
+    stroke-linecap="round"
+  />
+  <path
+    d="M612 850 C600 636 540 520 442 476 L408 434"
+    stroke="url(#rimCool)"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+
+  <!-- Ears -->
+  <path
+    d="M242 276 C228 274 222 288 226 308 C229 324 236 334 246 332 Z"
+    fill="#b88462"
+  />
+  <path
+    d="M438 276 C452 274 458 288 454 308 C451 324 444 334 434 332 Z"
+    fill="#86583d"
+  />
+
+  <!-- Sculpted head & jawline -->
+  <path
+    d="M244 248 C244 182 282 146 340 146 C398 146 436 182 436 248 V316 C436 376 394 426 340 426 C286 426 244 376 244 316 Z"
+    fill="url(#skinBase)"
+  />
+  <!-- Studio key-light shadow plane on right side of face -->
+  <path
+    d="M340 146 C398 146 436 182 436 248 V316 C436 376 394 426 340 426 C348 370 348 240 340 146 Z"
+    fill="url(#skinShadow)"
+  />
+  <!-- Cheekbone & temple light Planes -->
+  <ellipse cx="292" cy="312" rx="28" ry="18" fill="#f3ccb0" fill-opacity="0.22" />
+  <ellipse cx="318" cy="212" rx="46" ry="22" fill="#f3ccb0" fill-opacity="0.18" />
+
+  <!-- Facial features: eyebrows, eyes, nose, natural confident smile -->
+  <!-- Eyebrows -->
+  <path d="M264 252 Q292 243 320 250" stroke="#181c24" stroke-width="5.5" stroke-linecap="round" />
+  <path d="M360 250 Q388 243 416 252" stroke="#14171f" stroke-width="5.5" stroke-linecap="round" />
+
+  <!-- Eyes behind glasses -->
+  <ellipse cx="292" cy="282" rx="14" ry="8" fill="#ffffff" fill-opacity="0.88" />
+  <circle cx="293" cy="282" r="6.5" fill="#2b1d16" />
+  <circle cx="293" cy="282" r="3.2" fill="#090b10" />
+  <circle cx="290" cy="279" r="2" fill="#ffffff" />
+
+  <ellipse cx="388" cy="282" rx="14" ry="8" fill="#dfe7e0" fill-opacity="0.82" />
+  <circle cx="387" cy="282" r="6.5" fill="#231711" />
+  <circle cx="387" cy="282" r="3.2" fill="#090b10" />
+  <circle cx="384" cy="279" r="1.8" fill="#ffffff" />
+
+  <!-- Nose bridge & tip -->
+  <path
+    d="M338 278 L333 332 C332 340 338 345 346 344 C352 343 356 339 358 335"
+    stroke="#6e442f"
+    stroke-width="2.8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+  <path d="M337 282 V328" stroke="#f5d5bc" stroke-opacity="0.45" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Confident subtle smile -->
+  <path d="M312 368 Q340 381 368 368" stroke="#5c3322" stroke-width="3.2" stroke-linecap="round" fill="none" />
+  <path d="M320 375 Q340 383 360 375" stroke="#d99b82" stroke-opacity="0.45" stroke-width="2.4" stroke-linecap="round" />
+  <!-- Subtle chin crease -->
+  <path d="M328 398 Q340 403 352 398" stroke="#6e442f" stroke-opacity="0.45" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Modern half-rim / Titanium developer glasses -->
+  <g>
+    <rect
+      x="254"
+      y="262"
+      width="74"
+      height="42"
+      rx="10"
+      fill="url(#lensReflect)"
+      stroke="#e2e8f0"
+      stroke-opacity="0.82"
+      stroke-width="2.4"
+    />
+    <rect
+      x="352"
+      y="262"
+      width="74"
+      height="42"
+      rx="10"
+      fill="url(#lensReflect)"
+      stroke="#cbd5e1"
+      stroke-opacity="0.72"
+      stroke-width="2.4"
+    />
+    <path d="M328 276 Q340 272 352 276" stroke="#e2e8f0" stroke-width="2.6" stroke-linecap="round" />
+    <path d="M242 276 H254 M426 276 H438" stroke="#94a3b8" stroke-width="2.4" />
+    <!-- Crisp diagonal lens sheen -->
+    <path d="M264 268 L280 296 M276 268 L286 286" stroke="#ffffff" stroke-opacity="0.62" stroke-width="2.2" stroke-linecap="round" />
+    <path d="M362 268 L378 296 M374 268 L384 286" stroke="#ffffff" stroke-opacity="0.52" stroke-width="2.2" stroke-linecap="round" />
+  </g>
+
+  <!-- Textured layered modern hair cut-out -->
+  <path
+    d="M238 268 C226 212 242 152 288 128 C318 112 368 110 402 132 C436 154 452 198 442 268 C436 234 426 206 406 192 C384 202 356 206 324 202 C294 198 272 204 256 224 C246 236 242 252 238 268 Z"
+    fill="url(#hairGrad)"
+  />
+  <!-- Hair rim lighting (warm left, cool right) -->
+  <path
+    d="M238 264 C228 210 244 152 290 128 C316 114 352 112 382 122"
+    stroke="url(#rimWarm)"
+    stroke-width="2.6"
+    stroke-linecap="round"
+  />
+  <path
+    d="M386 124 C424 140 450 186 442 262"
+    stroke="url(#rimCool)"
+    stroke-width="2.4"
+    stroke-linecap="round"
+  />
+</svg>
